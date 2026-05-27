@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#d9f0ee"/>
+      <stop offset="1" stop-color="#f8faf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#sky)"/>
+  <path d="M0 305c130-30 260-42 390-31 150 13 280 12 410-8v254H0Z" fill="#59646b"/>
+  <path d="M0 348c120-25 240-33 360-22 170 16 300 12 440-10v204H0Z" fill="#3d454b"/>
+  <path d="M384 332c11 0 27 6 35 15 10 11 3 26-14 31-20 6-59 2-71-8-11-10-2-24 17-32 9-4 20-6 33-6Z" fill="#171b1f"/>
+  <path d="M353 355c20 8 43 9 69 2" stroke="#7b8790" stroke-width="5" fill="none"/>
+  <path d="M80 330h110M550 310h130" stroke="#f8faf8" stroke-width="10" stroke-linecap="round" stroke-dasharray="48 35"/>
+  <rect x="90" y="210" width="130" height="54" rx="6" fill="#0f766e"/>
+  <text x="112" y="244" font-family="Arial" font-size="21" font-weight="700" fill="#fff">WARD 177</text>
+</svg>

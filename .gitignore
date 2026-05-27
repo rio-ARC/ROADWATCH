@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local env
+.env
+.env.*
+!.env.example
+frontend/.env.local
+backend/.env
+
+# Logs and caches
+*.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Media/model artifacts
+ml/inference/models/
+ml/datasets/raw/
+ml/datasets/processed/

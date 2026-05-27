@@ -1,0 +1,39 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: roadwatch
+      POSTGRES_PASSWORD: roadwatch
+      POSTGRES_DB: roadwatch
+    ports:
+      - "5432:5432"
+    volumes:
+      - roadwatch_pg:/var/lib/postgresql/data
+      - ../../backend/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ../../backend/db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+
+  backend:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://roadwatch:roadwatch@db:5432/roadwatch
+      CORS_ORIGINS: http://localhost:3000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: ../infra/docker/Dockerfile.frontend
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  roadwatch_pg:

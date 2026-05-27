@@ -1,0 +1,16 @@
+{
+  "name": "RoadWatch",
+  "short_name": "RoadWatch",
+  "description": "AI civic road intelligence and complaint transparency.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7fbfc",
+  "theme_color": "#158f88",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
