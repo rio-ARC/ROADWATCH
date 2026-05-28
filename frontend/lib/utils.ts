@@ -6,9 +6,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function severityColor(severity: number) {
-  if (severity >= 80) return "#dc2626";
-  if (severity >= 55) return "#f59e0b";
-  return "#0f9f8d";
+  if (severity >= 80) return "#ff5a4f";
+  if (severity >= 55) return "#ffd700";
+  return "#74a8ff";
 }
 
 export function formatPercent(value: number) {

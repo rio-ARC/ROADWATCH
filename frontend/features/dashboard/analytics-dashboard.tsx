@@ -6,8 +6,10 @@ import { Bar, BarChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer,
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { authorityPerformance, contractorPerformance, dashboardSummary, severityDistribution } from "@/lib/mock-data";
 import { MetricCard } from "@/features/dashboard/metric-card";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { ProgressLine } from "@/components/ui/progress-line";
 
-const colors = ["#0f9f8d", "#f59e0b", "#ef4444", "#7f1d1d"];
+const colors = ["#74a8ff", "#ffd700", "#ff8b3d", "#ff5a4f"];
 
 export function AnalyticsDashboard() {
   const [mounted, setMounted] = useState(false);
@@ -17,16 +19,8 @@ export function AnalyticsDashboard() {
   }, []);
 
   return (
-    <main className="space-y-6 px-4 py-6 pb-24 md:px-8 lg:px-10">
-      <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Transparency Center</p>
-          <h1 className="mt-2 text-3xl font-semibold text-slate-950 md:text-5xl">Road accountability dashboard</h1>
-        </div>
-        <div className="rounded-lg border border-teal-200 bg-white/85 px-4 py-3 text-sm text-slate-600">
-          Live demo dataset: Chennai Zone 13, May 27 2026
-        </div>
-      </div>
+    <main className="space-y-6 px-4 py-6 pb-28 md:px-8 lg:px-10">
+      <SectionHeading eyebrow="Transparency Center" title="Infrastructure diagnostics" description="Government-grade contractor, authority, budget, and severity telemetry." status="Chennai Zone 13" />
 
       <section className="grid gap-4 md:grid-cols-4">
         <MetricCard label="Open complaints" value={dashboardSummary.openComplaints} trend="triage queue" />
@@ -38,7 +32,7 @@ export function AnalyticsDashboard() {
       <section className="grid gap-4 lg:grid-cols-[1fr_1.15fr]">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><BarChart3 className="h-5 w-5 text-teal-700" /> Severity distribution</CardTitle>
+            <CardTitle className="flex items-center gap-2"><BarChart3 className="h-5 w-5 text-road-yellow" /> Severity distribution</CardTitle>
           </CardHeader>
           <CardContent className="h-80 min-w-0">
             {mounted ? (
@@ -51,29 +45,29 @@ export function AnalyticsDashboard() {
                 </PieChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-full rounded-md bg-slate-50" />
+              <div className="h-full rounded bg-asphalt-deep" />
             )}
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Timer className="h-5 w-5 text-teal-700" /> Authority response performance</CardTitle>
+            <CardTitle className="flex items-center gap-2"><Timer className="h-5 w-5 text-road-yellow" /> Authority response performance</CardTitle>
           </CardHeader>
           <CardContent className="h-80 min-w-0">
             {mounted ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={authorityPerformance}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#d9e4e4" />
-                  <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                  <YAxis />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#4d4732" />
+                  <XAxis dataKey="name" tick={{ fontSize: 12, fill: "#d0c6ab" }} />
+                  <YAxis tick={{ fill: "#d0c6ab" }} />
                   <Tooltip />
-                  <Bar dataKey="response" name="Avg response hours" fill="#0f766e" radius={[6, 6, 0, 0]} />
-                  <Bar dataKey="resolved" name="Resolved %" fill="#94a3b8" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="response" name="Avg response hours" fill="#ffd700" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="resolved" name="Resolved %" fill="#74a8ff" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-full rounded-md bg-slate-50" />
+              <div className="h-full rounded bg-asphalt-deep" />
             )}
           </CardContent>
         </Card>
@@ -86,14 +80,12 @@ export function AnalyticsDashboard() {
               <CardTitle className="text-base">{contractor.name}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex items-center justify-between text-sm text-slate-600">
+              <div className="flex items-center justify-between text-sm text-road-muted">
                 <span className="inline-flex items-center gap-2"><Wrench className="h-4 w-4" /> quality score</span>
-                <strong className="text-slate-950">{contractor.score}/100</strong>
+                <strong className="text-road-cream">{contractor.score}/100</strong>
               </div>
-              <div className="h-2 rounded-full bg-slate-100">
-                <div className="h-2 rounded-full bg-teal-700" style={{ width: `${contractor.score}%` }} />
-              </div>
-              <p className="flex items-center gap-1 text-sm font-medium text-slate-700"><IndianRupee className="h-4 w-4" /> {contractor.budget} crore allocated</p>
+              <ProgressLine value={contractor.score} />
+              <p className="flex items-center gap-1 text-sm font-medium text-road-muted"><IndianRupee className="h-4 w-4 text-road-yellow" /> {contractor.budget} crore allocated</p>
             </CardContent>
           </Card>
         ))}

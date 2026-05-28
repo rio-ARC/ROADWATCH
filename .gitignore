@@ -29,3 +29,4 @@ backend/.env
 ml/inference/models/
 ml/datasets/raw/
 ml/datasets/processed/
+tmp-stitch/

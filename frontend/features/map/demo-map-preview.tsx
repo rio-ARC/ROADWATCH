@@ -5,12 +5,12 @@ import { Card } from "@/components/ui/card";
 
 const MapDashboardInner = dynamic(() => import("./map-inner").then((mod) => mod.MapInner), {
   ssr: false,
-  loading: () => <div className="grid h-full place-items-center text-sm text-slate-500">Loading civic map...</div>
+  loading: () => <div className="grid h-full place-items-center text-sm text-road-muted">Loading civic map...</div>
 });
 
 export function DemoMapPreview() {
   return (
-    <Card className="h-[560px] overflow-hidden bg-white/80 p-2 shadow-civic">
+    <Card className="scan-vignette relative h-[560px] overflow-hidden p-2">
       <MapDashboardInner compact />
     </Card>
   );
