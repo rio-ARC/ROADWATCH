@@ -30,9 +30,9 @@ export function AnalyticsDashboard() {
       </section>
 
       <section className="grid gap-4 lg:grid-cols-[1fr_1.15fr]">
-        <Card>
+        <Card className="glass-panel border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><BarChart3 className="h-5 w-5 text-road-yellow" /> Severity distribution</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-road-cream"><BarChart3 className="h-5 w-5 text-road-yellow" /> Severity distribution</CardTitle>
           </CardHeader>
           <CardContent className="h-80 min-w-0">
             {mounted ? (
@@ -41,18 +41,18 @@ export function AnalyticsDashboard() {
                   <Pie data={severityDistribution} dataKey="value" nameKey="name" innerRadius={62} outerRadius={108} paddingAngle={3}>
                     {severityDistribution.map((entry, index) => <Cell key={entry.name} fill={colors[index]} />)}
                   </Pie>
-                  <Tooltip />
+                  <Tooltip contentStyle={{ backgroundColor: "#1f1b10", borderColor: "#4d4732", borderRadius: "8px", color: "#eae2cf" }} />
                 </PieChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-full rounded bg-asphalt-deep" />
+              <div className="h-full rounded-lg bg-asphalt-deep" />
             )}
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="glass-panel border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Timer className="h-5 w-5 text-road-yellow" /> Authority response performance</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-road-cream"><Timer className="h-5 w-5 text-road-yellow" /> Authority response performance</CardTitle>
           </CardHeader>
           <CardContent className="h-80 min-w-0">
             {mounted ? (
@@ -61,13 +61,13 @@ export function AnalyticsDashboard() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#4d4732" />
                   <XAxis dataKey="name" tick={{ fontSize: 12, fill: "#d0c6ab" }} />
                   <YAxis tick={{ fill: "#d0c6ab" }} />
-                  <Tooltip />
+                  <Tooltip contentStyle={{ backgroundColor: "#1f1b10", borderColor: "#4d4732", borderRadius: "8px", color: "#eae2cf" }} />
                   <Bar dataKey="response" name="Avg response hours" fill="#ffd700" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="resolved" name="Resolved %" fill="#74a8ff" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-full rounded bg-asphalt-deep" />
+              <div className="h-full rounded-lg bg-asphalt-deep" />
             )}
           </CardContent>
         </Card>
@@ -75,13 +75,13 @@ export function AnalyticsDashboard() {
 
       <section className="grid gap-4 lg:grid-cols-4">
         {contractorPerformance.map((contractor) => (
-          <Card key={contractor.name}>
+          <Card key={contractor.name} className="glass-panel border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl hover:border-road-yellow/40 transition duration-300">
             <CardHeader>
-              <CardTitle className="text-base">{contractor.name}</CardTitle>
+              <CardTitle className="text-base text-road-cream">{contractor.name}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between text-sm text-road-muted">
-                <span className="inline-flex items-center gap-2"><Wrench className="h-4 w-4" /> quality score</span>
+                <span className="inline-flex items-center gap-2"><Wrench className="h-4 w-4 text-road-yellow" /> quality score</span>
                 <strong className="text-road-cream">{contractor.score}/100</strong>
               </div>
               <ProgressLine value={contractor.score} />

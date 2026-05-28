@@ -78,3 +78,47 @@ a {
   background: #ffd700;
   color: #221b00;
 }
+
+/* Stitch Specific Premium Elements */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 215, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 215, 0, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glow-yellow {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+.glow-yellow-hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.glow-yellow-hover:hover {
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.45); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes moving-line {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.digital-line {
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #FFD700, transparent);
+  animation: moving-line 6s linear infinite;
+  pointer-events: none;
+}
+

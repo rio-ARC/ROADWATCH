@@ -50,7 +50,7 @@ export default function HomePage() {
             ["Offline-first reporting", "Reports queue locally and sync with optimistic IDs when networks return.", WifiOff],
             ["Accountability layer", "Contractor response time, budget allocation, and project repair timelines.", ShieldCheck]
           ] as Array<[string, string, LucideIcon]>).map(([title, text, Icon]) => (
-            <article key={title} className="glass-panel rounded-lg p-5 transition hover:border-road-yellow/50">
+            <article key={title} className="glass-panel rounded-lg p-5 transition duration-300 glow-yellow-hover hover:border-road-yellow/50">
               <Icon className="mb-4 h-6 w-6 text-road-yellow" />
               <h2 className="font-display text-base font-semibold text-road-cream">{title}</h2>
               <p className="mt-2 text-sm leading-6 text-road-muted">{text}</p>
@@ -59,7 +59,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className="px-4 md:px-8 lg:px-10">
-        <div className="glass-panel grid gap-4 rounded-lg p-5 md:grid-cols-3">
+        <div className="glass-panel grid gap-4 rounded-lg p-5 md:grid-cols-3 border border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl">
           <div className="flex items-center gap-3">
             <Radar className="h-6 w-6 text-road-yellow" />
             <div>

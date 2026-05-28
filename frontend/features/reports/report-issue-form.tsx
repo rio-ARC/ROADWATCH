@@ -39,35 +39,35 @@ export function ReportIssueForm() {
     <main className="mx-auto grid max-w-6xl gap-5 px-4 py-6 pb-28 md:grid-cols-[1.15fr_0.85fr] md:px-8 lg:px-10">
       <section className="space-y-5">
         <SectionHeading eyebrow="Smart Reporting" title="Transmit road anomaly" description="AI-assisted intake with location, evidence, routing, and offline-safe submission." status={isOnline ? "Online sync" : "Offline queue"} />
-        <Card>
+        <Card className="glass-panel border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><LocateFixed className="h-5 w-5 text-road-yellow" /> 1. Pinpoint location</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-road-cream"><LocateFixed className="h-5 w-5 text-road-yellow animate-pulse" /> 1. Pinpoint location</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="relative h-64 overflow-hidden rounded border border-road-outline bg-asphalt-deep">
+            <div className="relative h-64 overflow-hidden rounded-lg border border-road-outline/45 bg-asphalt-deep">
               <Image src="/sample-road.svg" alt="Pinned road location preview" fill className="object-cover opacity-55 grayscale" />
               <div className="absolute inset-0 road-grid opacity-60" />
               <div className="absolute inset-0 grid place-items-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full border-2 border-dashed border-road-yellow text-road-yellow shadow-glow">
+                <span className="grid h-16 w-16 place-items-center rounded-full border-2 border-dashed border-road-yellow text-road-yellow shadow-glow animate-pulse-glow">
                   <LocateFixed className="h-7 w-7" />
                 </span>
               </div>
-              <div className="absolute inset-x-4 bottom-4 flex items-center gap-2 rounded border border-road-outline bg-asphalt/90 p-2 backdrop-blur-xl">
-                <Input placeholder="Search address or coordinates" defaultValue="Velachery Main Road near MRTS" />
-                <Button size="icon" variant="outline" aria-label="Search location"><Search className="h-4 w-4" /></Button>
+              <div className="absolute inset-x-4 bottom-4 flex items-center gap-2 rounded-lg border border-road-outline/45 bg-asphalt-deep/90 p-2 backdrop-blur-xl">
+                <Input placeholder="Search address or coordinates" defaultValue="Velachery Main Road near MRTS" className="bg-asphalt-deep border-road-outline/35 text-road-cream focus:border-road-yellow" />
+                <Button size="icon" variant="outline" className="border-road-outline/65 hover:bg-road-yellow/10" aria-label="Search location"><Search className="h-4 w-4 text-road-yellow" /></Button>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="glass-panel border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><CloudUpload className="h-5 w-5 text-road-yellow" /> 2. Visual evidence</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-road-cream"><CloudUpload className="h-5 w-5 text-road-yellow" /> 2. Visual evidence</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid min-h-52 place-items-center rounded border-2 border-dashed border-road-outline bg-asphalt-deep/60 p-5 text-center transition hover:border-road-yellow/60 hover:bg-road-yellow/5">
+            <div className="grid min-h-52 place-items-center rounded-lg border-2 border-dashed border-road-outline/45 bg-asphalt-deep/60 p-5 text-center transition hover:border-road-yellow/60 hover:bg-road-yellow/5">
               <div>
-                <CloudUpload className="mx-auto h-12 w-12 text-road-yellow" />
+                <CloudUpload className="mx-auto h-12 w-12 text-road-yellow animate-bounce" />
                 <p className="mt-4 font-mono text-sm font-semibold uppercase tracking-[0.07em] text-road-cream">Drag evidence here</p>
                 <p className="mt-2 text-sm text-road-muted">Images and videos are routed to Firebase/Supabase storage in production.</p>
                 <div className="mt-4 flex justify-center gap-2">
@@ -78,25 +78,25 @@ export function ReportIssueForm() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="glass-panel border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Mic className="h-5 w-5 text-road-yellow" /> 3. Incident details</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-road-cream"><Mic className="h-5 w-5 text-road-yellow" /> 3. Incident details</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Textarea value={description} onChange={(event) => setDescription(event.target.value)} />
+            <Textarea value={description} onChange={(event) => setDescription(event.target.value)} className="bg-asphalt-deep border-road-outline/35 text-road-cream focus:border-road-yellow min-h-[100px] rounded-lg" />
             <div className="flex flex-wrap gap-3">
-              <Button onClick={runAnalysis}><ScanLine className="h-4 w-4" /> Run AI triage</Button>
-              <Button variant="outline"><LocateFixed className="h-4 w-4" /> Use current location</Button>
-              <Button variant="outline"><Languages className="h-4 w-4" /> English</Button>
+              <Button onClick={runAnalysis} className="bg-road-yellow text-asphalt-deep hover:bg-road-yellow-dim shadow-glow"><ScanLine className="h-4 w-4 mr-1" /> Run AI triage</Button>
+              <Button variant="outline" className="border-road-outline/65 hover:bg-road-yellow/10"><LocateFixed className="h-4 w-4 mr-1 text-road-yellow" /> Use current location</Button>
+              <Button variant="outline" className="border-road-outline/65 hover:bg-road-yellow/10"><Languages className="h-4 w-4 mr-1 text-road-yellow" /> English</Button>
             </div>
           </CardContent>
         </Card>
       </section>
 
       <aside className="space-y-5">
-        <Card className="overflow-hidden">
+        <Card className="glass-panel border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl overflow-hidden">
           <CardHeader>
-            <CardTitle className="flex items-center justify-between gap-3">
+            <CardTitle className="flex items-center justify-between gap-3 text-road-cream">
               <span>AI analysis</span>
               <StatusPill pulse>Live</StatusPill>
             </CardTitle>
@@ -121,9 +121,9 @@ export function ReportIssueForm() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="glass-panel border-road-outline/45 bg-asphalt-panel/85 backdrop-blur-xl">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Route className="h-5 w-5 text-road-yellow" /> Authority routing</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-road-cream"><Route className="h-5 w-5 text-road-yellow" /> Authority routing</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             {route ? (
@@ -137,10 +137,10 @@ export function ReportIssueForm() {
             ) : (
               <p className="leading-6 text-road-muted">Routing resolves from geospatial ward boundaries and department rules. LLMs do not decide routing.</p>
             )}
-            <Button className="w-full" onClick={submit} disabled={!analysis || !route}>
-              <CheckCircle2 className="h-4 w-4" /> {isOnline ? "Submit complaint" : "Queue offline"}
+            <Button className="w-full mt-4 bg-road-yellow text-asphalt-deep hover:bg-road-yellow-dim shadow-glow" onClick={submit} disabled={!analysis || !route}>
+              <CheckCircle2 className="h-4 w-4 mr-1" /> {isOnline ? "Submit complaint" : "Queue offline"}
             </Button>
-            {submitted && <p className="rounded border border-emerald-400/30 bg-emerald-400/10 p-3 text-sm font-medium text-emerald-200">Report queued with optimistic sync ID. Dashboard will reconcile after upload.</p>}
+            {submitted && <p className="rounded border border-emerald-400/30 bg-emerald-400/10 p-3 text-sm font-medium text-emerald-200 mt-2">Report queued with optimistic sync ID. Dashboard will reconcile after upload.</p>}
           </CardContent>
         </Card>
       </aside>
